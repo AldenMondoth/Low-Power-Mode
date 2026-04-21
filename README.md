@@ -2,8 +2,8 @@
 low power mode for laptops with nvidia gpus
 
 requires: 
--> zsh for the shell interpreter, 
--> cpupower to set frequency, 
--> brightnessctl for hardware brightness control,
--> supergfxctl for initial gpu mux switch,
+-> zsh for the shell interpreter, \n
+-> cpupower to set frequency, \n
+-> brightnessctl for hardware brightness control,\n
+-> supergfxctl for initial gpu mux switch, \n
 -> asusctl for fan control
