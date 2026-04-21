@@ -1,0 +1,32 @@
+#!/usr/bin/zsh
+
+#sudo priv
+if [ "$EUID" -ne 0 ]; then
+  echo "Error: Please run this command with sudo."
+  exit 1
+fi
+
+#disabling gpu
+echo "Disabling GPU..."
+echo 1 | sudo tee /sys/devices/platform/asus-nb-wmi/dgpu_disable
+
+#checking if gpu is correctly mapped to intel driver
+echo "rescanning pci bus..."
+echo 1 | sudo tee /sys/bus/pci/rescan
+
+#setting cpu freq upper limit
+FREQ=0.0
+
+while [[ "$FREQ" -ge 2.6 || "$FREQ" -lt 0.4 ]]
+do
+	read "FREQ?what frequency would you like to set the CPU to? GHz: "
+	
+	if [[ "$FREQ" -ge 2.6 || "$FREQ" -lt 0.4 ]]; then
+		echo "that frequency is not within the range of 0.4-2.6 GHz"
+	fi
+done
+
+sudo cpupower frequency-set -u "$FREQ"GHz 
+
+#set brightness
+brightnessctl set 20%
