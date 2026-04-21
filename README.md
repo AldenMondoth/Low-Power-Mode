@@ -1,7 +1,7 @@
 # Low-Power-Mode
 low power mode for laptops with nvidia gpus
 
-requires: 
+requires: <br />
 -> zsh for the shell interpreter, <br />
 -> cpupower to set frequency, <br />
 -> brightnessctl for hardware brightness control, <br />
